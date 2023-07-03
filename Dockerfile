@@ -1,7 +1,7 @@
 FROM node:lts as build
 
 RUN apt-get update \
-  && apt-get install -y build-essential python perl-modules
+  && apt-get install -y build-essential python3 perl-modules
 
 RUN deluser --remove-home node \
   && groupadd --gid 1000 nodered \
