@@ -24,9 +24,9 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          load: true
+          push: true
           tags: passadoreg/nodereddocker:latest
       -
         name: Inspect
         run: |
-          docker image inspect myimage:latest
+          docker image inspect passadoreg/nodereddocker:latest
