@@ -93,5 +93,49 @@
         "x": 490,
         "y": 380,
         "wires": []
+    },
+    {
+        "id": "a557acb0efc75a0f",
+        "type": "http in",
+        "z": "3af82246.3634ae",
+        "name": "",
+        "url": "/bye",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 200,
+        "y": 460,
+        "wires": [
+            [
+                "b4ef868fe4ad227e"
+            ]
+        ]
+    },
+    {
+        "id": "b4ef868fe4ad227e",
+        "type": "template",
+        "z": "3af82246.3634ae",
+        "name": "page",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <head></head>\n    <body>\n        <h1>Bye World!</h1>\n    </body>\n</html>",
+        "x": 350,
+        "y": 460,
+        "wires": [
+            [
+                "49395ea33fa78efe"
+            ]
+        ]
+    },
+    {
+        "id": "49395ea33fa78efe",
+        "type": "http response",
+        "z": "3af82246.3634ae",
+        "name": "",
+        "x": 490,
+        "y": 460,
+        "wires": []
     }
 ]
