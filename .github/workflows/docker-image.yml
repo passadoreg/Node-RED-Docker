@@ -1,6 +1,8 @@
 name: Docker Image CI
 
 on:
+  label:
+    types: [created]
   workflow_dispatch:
 
 jobs:
