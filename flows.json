@@ -137,5 +137,49 @@
         "x": 490,
         "y": 460,
         "wires": []
+    },
+    {
+        "id": "696f61d38ca633df",
+        "type": "http in",
+        "z": "3af82246.3634ae",
+        "name": "",
+        "url": "/carlos",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 210,
+        "y": 540,
+        "wires": [
+            [
+                "d1ea6939e593e633"
+            ]
+        ]
+    },
+    {
+        "id": "d1ea6939e593e633",
+        "type": "template",
+        "z": "3af82246.3634ae",
+        "name": "page",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <head></head>\n    <body>\n        <h1>Carlos!</h1>\n    </body>\n</html>",
+        "x": 350,
+        "y": 540,
+        "wires": [
+            [
+                "32f2f310b893749e"
+            ]
+        ]
+    },
+    {
+        "id": "32f2f310b893749e",
+        "type": "http response",
+        "z": "3af82246.3634ae",
+        "name": "",
+        "x": 490,
+        "y": 540,
+        "wires": []
     }
 ]
