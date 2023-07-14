@@ -50,4 +50,3 @@ ENV NODE_PATH=/data/node_modules
 EXPOSE 1880
 
 CMD ["node", "/data/server.js", "/data/flows.json"]
-
