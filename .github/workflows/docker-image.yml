@@ -1,10 +1,9 @@
 name: Docker Image CI
 
 on:
-  label:
-    types: [created]
-  workflow_dispatch:
-
+  push:
+    tags:
+      - '*'
 jobs:
 
   build:
@@ -27,8 +26,19 @@ jobs:
         with:
           context: .
           push: true
-          tags: passadoreg/nodereddocker:latest
+          tags: passadoreg/nodereddocker:${{  github.ref_name }}
       -
         name: Inspect
         run: |
-          docker image inspect passadoreg/nodereddocker:latest
+          docker image inspect passadoreg/nodereddocker:${{  github.ref_name }}
+
+      - name: Update Image Version in the related deployment.yml
+        uses: fjogeleit/yaml-update-action@main
+        with:
+          valueFile: 'deployment/deployment.yml'
+          propertyPath: 'image'
+          value: passadoreg/nodereddocker:${{  github.ref_name }}
+          branch: master
+          targetBranch: master
+          commitChange: true
+          message: 'Update Image Version to passadoreg/nodereddocker:${{  github.ref_name }}' 

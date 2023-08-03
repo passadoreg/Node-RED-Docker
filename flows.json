@@ -181,5 +181,49 @@
         "x": 490,
         "y": 540,
         "wires": []
+    },
+    {
+        "id": "3ef1aa2703d60f7d",
+        "type": "http in",
+        "z": "3af82246.3634ae",
+        "name": "",
+        "url": "/rodolfo",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 210,
+        "y": 620,
+        "wires": [
+            [
+                "755a77888fd7fe17"
+            ]
+        ]
+    },
+    {
+        "id": "755a77888fd7fe17",
+        "type": "template",
+        "z": "3af82246.3634ae",
+        "name": "page",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <head></head>\n    <body>\n        <h1>Rodolfo!</h1>\n    </body>\n</html>",
+        "x": 350,
+        "y": 620,
+        "wires": [
+            [
+                "5105e586c7450cae"
+            ]
+        ]
+    },
+    {
+        "id": "5105e586c7450cae",
+        "type": "http response",
+        "z": "3af82246.3634ae",
+        "name": "",
+        "x": 490,
+        "y": 620,
+        "wires": []
     }
 ]
