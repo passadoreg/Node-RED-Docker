@@ -30,4 +30,3 @@ spec:
               value: America/Argentina/Buenos_Aires
             - name: NODE_RED_ENABLE_PROJECTS
               value: 'true'
-image: passadoreg/nodereddocker:v8
