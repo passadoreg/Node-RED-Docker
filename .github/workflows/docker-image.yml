@@ -32,10 +32,10 @@ jobs:
         run: |
           docker image inspect passadoreg/nodereddocker:${{  github.ref_name }}
 
-      - name: Update Image Version in the related deployment.tml
+      - name: Update Image Version in the related deployment.yml
         uses: fjogeleit/yaml-update-action@main
         with:
-          valueFile: 'deployment/deployment.yaml'
+          valueFile: 'deployment/deployment.yml'
           propertyPath: 'image'
           value: passadoreg/nodereddocker:${{  github.ref_name }}
           branch: master
