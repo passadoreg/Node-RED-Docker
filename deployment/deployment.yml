@@ -29,7 +29,5 @@ spec:
             - name: TZ
               value: America/Argentina/Buenos_Aires
             - name: NODE_RED_ENABLE_PROJECTS
-              value: "true"
-
-
-
+              value: 'true'
+image: passadoreg/nodereddocker:v8
