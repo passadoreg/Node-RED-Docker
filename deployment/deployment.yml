@@ -18,7 +18,7 @@ spec:
         app: nodeflowtest
     spec:
       containers:
-        - image: passadoreg/nodereddocker:latest
+        - image: passadoreg/nodereddocker:v2
           imagePullPolicy: Always
           name: nodeflowtest
           ports:
