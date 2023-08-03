@@ -1,0 +1,8 @@
+{
+    "projects": {
+        "NodeRedTest": {
+            "credentialSecret": false
+        }
+    },
+    "activeProject": "NodeRedTest"
+}
