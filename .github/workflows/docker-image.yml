@@ -31,3 +31,11 @@ jobs:
         name: Inspect
         run: |
           docker image inspect passadoreg/nodereddocker:${{  github.ref_name }}
+
+      - name: Update Image Version in the related deployment.tml
+        uses: fjogeleit/yaml-update-action@main
+        with:
+          valueFile: 'deployment/deployment.yaml'
+          propertyPath: 'image'
+          value: passadoreg/nodereddocker:${{  github.ref_name }}
+          message: 'Update Image Version to passadoreg/nodereddocker:${{  github.ref_name }}' 
