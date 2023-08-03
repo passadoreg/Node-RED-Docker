@@ -36,7 +36,7 @@ jobs:
         uses: fjogeleit/yaml-update-action@main
         with:
           valueFile: 'deployment/deployment.yml'
-          propertyPath: 'spec.template.spec.containers.image'
+          propertyPath: 'spec.template.spec.containers.0.image'
           value: passadoreg/nodereddocker:${{  github.ref_name }}
           branch: master
           targetBranch: master
