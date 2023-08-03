@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nodeflowtest
+  name: nodeflowtest
+  namespace: nodeflowtest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodeflowtest
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: nodeflowtest
+    spec:
+      containers:
+        - image: passadoreg/nodereddocker:latest
+          imagePullPolicy: Always
+          name: nodeflowtest
+          ports:
+            - containerPort: 1880
+              protocol: TCP
+          resources: {}
+          env:
+            - name: TZ
+              value: America/Argentina/Buenos_Aires
+            - name: NODE_RED_ENABLE_PROJECTS
+              value: "true"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nodeflowtest
+  name: nodeflowtest
+  namespace: nodeflowtest
+spec:
+  ports:
+    - name: "1880"
+      port: 1880
+      protocol: TCP
+      targetPort: 1880
+  selector:
+    app: nodeflowtest
+  sessionAffinity: None
+  type: ClusterIP
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: "public"
+  name: nodeflowtest
+  namespace: nodeflowtest
+spec:
+  tls:
+  - hosts:
+    - nodeflowtest.nucworker.lan
+    secretName: kubernetes-dashboard-certs
+  rules:
+  - host: nodeflowtest.nucworker.lan
+    http:
+      paths:
+      - backend:
+          service:
+            name: nodeflowtest
+            port:
+              number: 1880
+        path: /
+        pathType: ImplementationSpecific
+
